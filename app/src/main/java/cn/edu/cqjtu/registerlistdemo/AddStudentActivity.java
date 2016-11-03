@@ -57,6 +57,13 @@ public class AddStudentActivity extends AppCompatActivity {
         bar.setDisplayHomeAsUpEnabled(true);
         init();
         clearState();
+        if (savedInstanceState != null) {
+            etSno.setText(savedInstanceState.getString("sno"));
+            etSname.setText(savedInstanceState.getString("sname"));
+            mSpinnerClass.setSelection(savedInstanceState.getInt("sclass_position"));
+            Bitmap bitmap = BitmapUtil.getBitmap(savedInstanceState.getByteArray("image"));
+            imgHeader.setImageBitmap(bitmap);
+        }
     }
 
     private void init() {
@@ -111,12 +118,11 @@ public class AddStudentActivity extends AppCompatActivity {
                 return;
             }
             final String sname = etSname.getText().toString().trim();
-            if(sname.equals(""))
-            {
+            if (sname.equals("")) {
                 Toast.makeText(AddStudentActivity.this, "姓名不能为空", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if (!sno.equals("") && !sname.equals("") &&   !className.equals(classList.get(0))) {
+            if (!sno.equals("") && !sname.equals("") && !className.equals(classList.get(0))) {
                 if (!imgChanged) {
                     new AlertDialog.Builder(AddStudentActivity.this).setTitle("温馨提示").setMessage("您未修改图片，是否将此默认图片作为头像").setPositiveButton("确定", new DialogInterface.OnClickListener() {
                         @Override
@@ -133,7 +139,7 @@ public class AddStudentActivity extends AppCompatActivity {
                         }
                     }).setNegativeButton("返回", null).show();
                 } else {
-                    Student newStu = new Student(sno,sname, className, mBitmap, (short) 100);
+                    Student newStu = new Student(sno, sname, className, mBitmap, (short) 100);
                     StudentDao dao = Dto.getDto().getStuDao();
                     if (dao.add(newStu)) {
                         Toast.makeText(AddStudentActivity.this, "添加" + sname + "同学成功", Toast.LENGTH_SHORT).show();
@@ -158,7 +164,7 @@ public class AddStudentActivity extends AppCompatActivity {
     private boolean checkTextChanged() {
         String sno = etSno.getText().toString().trim();
         String sname = etSname.getText().toString().trim();
-        return (sno != null && !sno.equals("")) || (sname != null && !sname.equals(""))|| !className.equals(classList.get(0));
+        return (sno != null && !sno.equals("")) || (sname != null && !sname.equals("")) || !className.equals(classList.get(0));
     }
 
 
@@ -179,7 +185,7 @@ public class AddStudentActivity extends AppCompatActivity {
                     finish();
                 }
             }).setNegativeButton("返回", null).show();
-        }else{
+        } else {
             finish();
         }
     }
@@ -227,5 +233,16 @@ public class AddStudentActivity extends AppCompatActivity {
             imgChanged = true;
             imgHeader.setImageBitmap(mBitmap);
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putString("sno", etSno.getText().toString());
+        outState.putString("sname", etSname.getText().toString());
+        outState.putInt("sclass_position", mSpinnerClass.getSelectedItemPosition());
+        imgHeader.setDrawingCacheEnabled(true);
+        outState.putByteArray("image", BitmapUtil.getByteArray(imgHeader.getDrawingCache()));
+        imgHeader.setDrawingCacheEnabled(false);
+        super.onSaveInstanceState(outState);
     }
 }

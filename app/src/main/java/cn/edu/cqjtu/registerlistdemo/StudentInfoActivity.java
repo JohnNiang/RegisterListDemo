@@ -59,6 +59,15 @@ public class StudentInfoActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         initView();
+        if(savedInstanceState!=null){
+            etSno.setText(savedInstanceState.getString("sno"));
+            etSname.setText(savedInstanceState.getString("sname"));
+            etClass.setText(savedInstanceState.getString("sclass"));
+            tvAttendence.setText(savedInstanceState.getString("attendence"));
+            tvScore.setText(savedInstanceState.getString("score"));
+            Bitmap bitmap = BitmapUtil.getBitmap(savedInstanceState.getByteArray("image"));
+            imgHeader.setImageBitmap(bitmap);
+        }
     }
 
     @Override
@@ -229,5 +238,16 @@ public class StudentInfoActivity extends AppCompatActivity {
         }
     }
 
-
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putString("sno",etSno.getText().toString());
+        outState.putString("sname",etSname.getText().toString());
+        outState.putString("sclass",etClass.getText().toString());
+        outState.putString("attendence",tvAttendence.getText().toString());
+        outState.putString("score",tvScore.getText().toString());
+        imgHeader.setDrawingCacheEnabled(true);
+        outState.putByteArray("image",BitmapUtil.getByteArray(imgHeader.getDrawingCache()));
+        imgHeader.setDrawingCacheEnabled(false);
+        super.onSaveInstanceState(outState);
+    }
 }
