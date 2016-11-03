@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">RegisterListDemo</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="btn_animation">Animation</string>
+    <string name="about">关于</string>
+    <string name="search">搜索结果</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="student_info">学生信息</string>
+    <string name="btn_modify">修改</string>
+    <string name="btn_del">删除</string>
+    <string name="tv_attendence">考勤</string>
+    <string name="tv_score">总评</string>
+    <string name="tv_class">班级</string>
+    <string name="tv_name">姓名</string>
+    <string name="tv_sno">学号</string>
+    <string name="class_all">所有班级</string>
+    <string name="class_one">计科一班</string>
+    <string name="class_two">计科二班</string>
+    <string name="class_three">计科三班</string>
+    <string name="class_four">计科四班</string>
+    <string name="check">点名</string>
+    <string name="input_tip">请输入总的课程次</string>
+    <string name="add_student">添加学生</string>
+</resources>

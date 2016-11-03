@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_class_all"
+            android:icon="@mipmap/ic_face_black_48dp"
+            android:title="@string/class_all"
+            />
+        <item
+            android:id="@+id/nav_class_one"
+            android:icon="@mipmap/ic_face_black_48dp"
+            android:title="@string/class_one"/>
+        <item
+            android:id="@+id/nav_class_two"
+            android:icon="@mipmap/ic_face_black_48dp"
+            android:title="@string/class_two"/>
+        <item
+            android:id="@+id/nav_class_three"
+            android:icon="@mipmap/ic_face_black_48dp"
+            android:title="@string/class_three"/>
+        <item
+            android:id="@+id/nav_class_four"
+            android:icon="@mipmap/ic_face_black_48dp"
+            android:title="@string/class_four"/>
+
+    </group>
+
+    <item android:title="功能">
+        <menu>
+            <item
+                android:id="@+id/nav_check"
+                android:icon="@mipmap/ic_touch_app_black_48dp"
+                android:title="点名"/>
+            <item
+                android:id="@+id/nav_setting"
+                android:icon="@mipmap/ic_build_black_48dp"
+                android:title="设置"/>
+
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@mipmap/ic_info_outline_black_48dp"
+                android:title="@string/about"/>
+        </menu>
+    </item>
+
+</menu>
